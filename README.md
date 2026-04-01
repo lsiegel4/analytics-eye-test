@@ -6,6 +6,6 @@ College basketball scouting platform for NBA draft-eligible prospects. Advanced 
 
 | Directory | Description |
 |-----------|-------------|
-| `web/` | Next.js 15 web application (Vercel deployment) |
+| `web/` | Next.js 16 web application (Vercel deployment) |
 | `pipeline/` | Python data pipeline (GitHub Actions) |
 | `.github/workflows/` | CI/CD workflow definitions |

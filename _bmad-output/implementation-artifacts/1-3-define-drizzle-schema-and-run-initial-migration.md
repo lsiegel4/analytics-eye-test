@@ -1,6 +1,6 @@
 # Story 1.3: Define Drizzle Schema and Run Initial Migration
 
-Status: review
+Status: done
 
 ## Story
 
@@ -42,6 +42,18 @@ So that the database is ready to receive writes from the pipeline and reads from
 - [x] Task 5: Verify build still passes
   - [x] 5.1 Run `npm run build` in `/web` to confirm schema file doesn't break the build
   - [x] 5.2 Verify the Drizzle client in `web/src/db/index.ts` can import from schema without errors
+
+### Review Findings
+
+- [x] [Review][Decision] `isPlayable` nullable boolean tri-state — resolved: kept nullable; null = not yet verified, false = verified not playable, true = verified playable (documented in schema comment)
+- [x] [Review][Decision] `statValue` and `percentile` nullable in `player_stats` — resolved: deferred; nullable is intentional (player may lack data); decide when building ingestion in Epic 2
+- [x] [Review][Patch] `pipelineRuns.startedAt` should be `.notNull()` per spec [web/src/db/schema.ts] — fixed: .notNull() applied; migration 0001 generated and applied
+- [x] [Review][Patch] `pipelineRuns.status` should be `.notNull()` per spec [web/src/db/schema.ts] — fixed: .notNull() applied
+- [x] [Review][Patch] `pipelineRuns.playersUpdated` should be `.notNull()` per spec [web/src/db/schema.ts] — fixed: .notNull() applied
+- [x] [Review][Defer] `ActionResult<T>` / Server Actions absent (ARCH6) — deferred, pre-existing; by design for Epic 6
+- [x] [Review][Defer] `<StatUnavailable />` component absent (ARCH8) — deferred, pre-existing; by design for Epic 5
+- [x] [Review][Defer] `ON DELETE no action` on FKs — deferred, pre-existing; intentional (soft-delete via `is_active`, players never hard-deleted)
+- [x] [Review][Defer] `errorsJson` untyped `jsonb` — deferred, pre-existing; acceptable v1, typed at read time
 
 ## Dev Notes
 

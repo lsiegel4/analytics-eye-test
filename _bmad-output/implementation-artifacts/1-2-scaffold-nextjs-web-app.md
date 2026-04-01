@@ -1,6 +1,6 @@
 # Story 1.2: Scaffold Next.js Web App
 
-Status: review
+Status: done
 
 ## Story
 
@@ -37,6 +37,14 @@ So that the web layer is ready for feature development with all tooling configur
   - [x] 5.1 Run `npm run dev` and confirm it starts without errors
   - [x] 5.2 Run `npm run build` and confirm it completes without errors
   - [x] 5.3 Verify no authentication middleware or login routes exist (FR26)
+
+### Review Findings
+
+- [x] [Review][Patch] `"lint": "eslint"` missing target path — fixed: changed to `next lint` [web/package.json]
+- [x] [Review][Decision] Pool connection limits and serverless singleton pattern — resolved: applied globalThis singleton guard
+- [x] [Review][Patch] DATABASE_URL undefined causes silent/wrong error in Pool constructor [web/src/db/index.ts] — fixed: throws early with clear message + singleton guard applied
+- [x] [Review][Patch] .env.example doesn't clarify `.env.local` filename for Next.js [web/.env.example] — fixed: added clarifying comments
+- [x] [Review][Defer] db/queries/ directory absent (ARCH7) [web/src/db/] — deferred, pre-existing; by design for Epic 4
 
 ## Dev Notes
 

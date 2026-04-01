@@ -1,6 +1,6 @@
 # Story 1.1: Initialize Monorepo Structure
 
-Status: review
+Status: done
 
 ## Story
 
@@ -30,6 +30,10 @@ So that both services share a single repository with clear boundaries and no cro
   - [x] 4.2 Verify `.gitignore` contains all required patterns
   - [x] 4.3 Verify no cross-imports exist between `/web` and `/pipeline`
   - [x] 4.4 Verify `README.md` exists at root
+
+### Review Findings
+
+- [x] [Review][Patch] README version mismatch — said "Next.js 15" but installed version is 16.2.1 [README.md] — fixed
 
 ## Dev Notes
 

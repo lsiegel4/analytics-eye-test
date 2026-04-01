@@ -37,15 +37,16 @@ export const playerClips = pgTable('player_clips', {
     .notNull(),
   skillCategory: text('skill_category').notNull(),
   videoId: text('video_id'),
+  // isPlayable tri-state: null = not yet verified, false = verified not playable, true = verified playable
   isPlayable: boolean('is_playable'),
   verifiedAt: timestamp('verified_at', { withTimezone: true }),
 });
 
 export const pipelineRuns = pgTable('pipeline_runs', {
   id: serial('id').primaryKey(),
-  startedAt: timestamp('started_at', { withTimezone: true }),
+  startedAt: timestamp('started_at', { withTimezone: true }).notNull(),
   completedAt: timestamp('completed_at', { withTimezone: true }),
-  status: text('status'),
-  playersUpdated: integer('players_updated'),
+  status: text('status').notNull(),
+  playersUpdated: integer('players_updated').notNull(),
   errorsJson: jsonb('errors_json'),
 });
